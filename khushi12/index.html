@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <script src="controller.js"></script>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+    crossorigin="anonymous"
+  />
+
+  <body>
+<style>
+
+label
+{
+margin-top:150px;
+font-size:20px;
+font-weight:bold;
+margin-right:400px;
+padding-right:250px;
+}
+.show
+{
+margin-right:250px;
+
+}
+#phones
+{
+margin-right:250px;
+}
+#submit
+{
+text-align:center;
+margin-right:250px;
+
+}
+</style>
+    <div class="show" id="content">
+      <label for="phones" style="text-align:center;">Choose a Phone:</label>
+
+      <select id="phones">
+        <option value="Apple">Apple</option>
+        <option value="Xiaomi">Xiaomi</option>
+        <option value="POCO">POCO</option>
+        <option value="OnePlus">OnePlus</option>
+      </select>
+
+<div class="container border">
+<p id="data" style="display:none;">no data available</p>
+</div>
+  </div>
+<input type="submit" id="submit" value="submit" name="submit">
+    
+  </body>
+
+  <script>
+let response=fetchData();
+
+    //document.getElementById("spinner").classList.add("hidden");
+    //document.getElementById("content").classList.remove("hidden");
+    document.getElementById("phones").addEventListener("change", function(event){
+      var e = document.getElementById("phones");
+      var selectedPhone = e.options[e.selectedIndex].text;
+      console.log(selectedPhone);
+document.getElementById ('data').style.display = 'none';
+      onValueSelect(event,response, selectedPhone);
+    });
+
+  document.getElementById('submit').addEventListener('click', function (event){
+      document.getElementById ('data').style.display = 'block';
+    });
+
+  </script>
+</html>
